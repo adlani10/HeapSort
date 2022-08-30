@@ -18,6 +18,26 @@ public class ArrayHeap<T> extends ArrayBinaryTree<T> implements HeapADT<T>
 		super();
 	}
 
+	private void heapify(T[] arr, int n, int i) {
+		int smallest = i;
+		int left = 2 * i + 1;
+		int right = 2 * i + 2;
+
+		if (left < n && ((Comparable<T>) arr[left]).compareTo(arr[smallest]) < 0)
+			smallest = left;
+
+		if (right < n && ((Comparable<T>) arr[right]).compareTo(arr[smallest]) < 0)
+			smallest = right;
+
+		if (smallest != i) {
+			T temp = arr[i];
+			arr[i] = arr[smallest];
+			arr[smallest] = temp;
+
+			heapify(arr, n, smallest);
+		}
+	}
+
 	/**
 	 * Adds the specified element to this heap in the appropriate
 	 * position according to its key value.  

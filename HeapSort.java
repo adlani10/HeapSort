@@ -29,4 +29,18 @@ public class HeapSort<T>
 			count++;
 		}
 	}
+
+	public void heapSort2(T[] data)
+	{
+		// copy the array into a heap, using the array to be sorted
+		ArrayHeap<T> heap = new ArrayHeap<T>();
+
+		// place the sorted elements back into the array
+		int count = 0;
+		while (!(heap.isEmpty()))
+		{
+			data[count] = heap.removeMin();
+			count++;
+		}
+	}
 }
